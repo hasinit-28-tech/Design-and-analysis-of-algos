@@ -1,5 +1,4 @@
 def karatsuba(x, y):
-    "Return x*y using Karatsuba algorithm (integers)."
     if x < 10 or y < 10:
         return x * y
     n = max(len(str(abs(x))), len(str(abs(y))))
@@ -18,5 +17,5 @@ def karatsuba(x, y):
 a = 12345678901234567890
 b = 98765432109876543210
 print("Karatsuba product (sample):", karatsuba(12345, 67890))
-# check a larger example:
 print("Check equality with built-in multiplication:", karatsuba(a,b) == a*b)
+
