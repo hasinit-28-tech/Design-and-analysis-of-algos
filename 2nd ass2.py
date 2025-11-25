@@ -1,26 +1,26 @@
-def get_combinations(items, k):
-    "Return all possible groups of size k from the given list."
-    result = []                 
-    n = len(items)
+#mplement combination from scratch (do not use inbuilt methods) - For any data type using the daa concepts
+# COMBINATIONS (WORKS FOR ANY DATA TYPE)
 
-    def helper(start, current):
-        # Base case
+def generate_combinations(arr, k):
+    result = []
+    current = []
+
+    def backtrack(start):
         if len(current) == k:
             result.append(current.copy())
             return
+        for i in range(start, len(arr)):
+            current.append(arr[i])   # choose
+            backtrack(i + 1)        # recurse
+            current.pop()           # un-choose (backtrack)
 
-
-        for i in range(start, n):
-            current.append(items[i]) 
-            helper(i + 1, current)    
-            current.pop()              
-
-    helper(0, [])
+    backtrack(0)
     return result
 
-
-# Example
-letters = ['a', 'b', 'c', 'd']
-print(f"All combinations of {letters} taken 2 at a time:")
-for combo in get_combinations(letters, 2):
-    print(combo)
+# Example Usage
+data = ["A", 2, "X", 5]   # any data type
+k = 2
+combs = generate_combinations(data, k)
+print("All combinations:")
+for c in combs:
+    print(c)
